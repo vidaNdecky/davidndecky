@@ -8,14 +8,18 @@
 		<version>2.7.12</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>groupeisi.sn</groupId>
+	<groupId>com.groupeisi.m2gl</groupId>
 	<artifactId>davidndecky</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>davidndecky</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<sonar.host.url>http://13.53.89.207:9000</sonar.host.url>
+		<sonar.login>sqp_d16ae75acadecbae613543fbbf4029434217f20d</sonar.login>
+		<sonar.projectKey>davidndecky</sonar.projectKey>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -40,6 +44,14 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<repository>
+			<id>maven-snapshots</id>
+			<name>My Nexus Repository</name>
+			<url>http://13.53.89.207:8081/repository/maven-snapshots/</url>
+		</repository>
+	</distributionManagement>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -52,6 +64,23 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.9.0.2155</version>
+				<!--<configuration>
+					<sonar.host.url>http://13.53.89.207:9000</sonar.host.url>
+					<sonar.login>squ_c2dfb1a388f33d763858b20e7def21ee65f18f3f</sonar.login>
+					<sonar.projectKey>Test</sonar.projectKey>
+				</configuration>-->
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 		</plugins>
